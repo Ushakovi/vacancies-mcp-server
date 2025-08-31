@@ -1,0 +1,31 @@
+{
+    "name": "vacancies-mcp-server",
+    "version": "1.0.0",
+    "description": "",
+    "keywords": [],
+    "license": "ISC",
+    "author": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "tsc",
+        "dev": "nodemon --watch src --ext ts --exec ts-node ./src/stdio/index.ts",
+        "dev-http": "nodemon --watch src --ext ts --exec ts-node ./src/http/index.ts",
+        "mcp": "ts-node ./src/stdio/index.ts",
+        "mcp-http": "ts-node ./src/http/index.ts",
+        "mcp-inspect": "mcp-inspector pnpm mcp"
+    },
+    "dependencies": {
+        "@modelcontextprotocol/sdk": "^1.15.0",
+        "cors": "^2.8.5",
+        "express": "^5.1.0",
+        "zod": "3"
+    },
+    "devDependencies": {
+        "@modelcontextprotocol/inspector": "^0.15.0",
+        "@types/cors": "^2.8.19",
+        "@types/express": "^5.0.3",
+        "@types/node": "^24.0.10",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.9.2"
+    }
+}
