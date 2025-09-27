@@ -73,7 +73,7 @@ app.post('/mcp', async (req, res) => {
                     'Возвращает список всех вакансий по поисковому слову. Можно передать количество элементов',
                 inputSchema: {
                     searchText: z.string(),
-                    perPage: z.number().optional(),
+                    perPage: z.string().optional(),
                 },
             },
             async (req) => {
