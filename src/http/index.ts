@@ -46,41 +46,23 @@ app.post('/mcp', async (req, res) => {
         server.registerTool(
             'get_vacancies',
             {
-                title: 'Получение всех вакансий',
-                description: 'Возвращает список всех вакансий.',
-                inputSchema: {},
-            },
-            async () => {
-                const data = await fetch('https://api.hh.ru/vacancies?area=1');
-                const vacancies = await data.json();
-
-                return {
-                    content: [
-                        {
-                            type: 'text',
-                            text: JSON.stringify(vacancies),
-                        },
-                    ],
-                };
-            }
-        );
-
-        server.registerTool(
-            'get_vacancies_by_search_word',
-            {
-                title: 'Получение всех вакансий по поисковому слову',
+                title: 'Получение всех вакансий.',
                 description:
-                    'Возвращает список всех вакансий по поисковому слову. Можно передать количество элементов',
+                    'Возвращает список всех вакансий. Можно передать фильтры',
                 inputSchema: {
-                    searchText: z.string(),
-                    perPage: z.string().optional(),
+                    searchText: z.string().describe('Поисковое слово'),
+                    salary: z.number().describe('Размер заработной платы'),
+                    perPage: z
+                        .string()
+                        .optional()
+                        .describe('Количество элементов на странице'),
                 },
             },
             async (req) => {
                 const data = await fetch(
                     `https://api.hh.ru/vacancies?area=1&text=${req.searchText}${
                         req.perPage ? `&per_page=${req.perPage}` : ''
-                    }`
+                    }${req.salary ? `&salary=${req.salary}` : ''}`
                 );
                 const vacancies = await data.json();
 
