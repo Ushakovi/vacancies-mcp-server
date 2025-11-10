@@ -39,7 +39,7 @@ app.post('/mcp', async (req, res) => {
         };
 
         const server = new McpServer({
-            name: 'users-mcp-server',
+            name: 'vacancies-mcp-server',
             version: '1.0.0',
         });
 
@@ -51,7 +51,10 @@ app.post('/mcp', async (req, res) => {
                     'Возвращает список всех вакансий. Можно передать фильтры',
                 inputSchema: {
                     searchText: z.string().describe('Поисковое слово'),
-                    salary: z.number().describe('Размер заработной платы'),
+                    salary: z
+                        .number()
+                        .optional()
+                        .describe('Размер заработной платы'),
                     perPage: z
                         .string()
                         .optional()

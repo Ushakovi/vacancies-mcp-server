@@ -8,8 +8,6 @@
     "main": "index.js",
     "scripts": {
         "build": "tsc",
-        "dev": "nodemon --watch src --ext ts --exec ts-node ./src/stdio/index.ts",
-        "dev-http": "nodemon --watch src --ext ts --exec ts-node ./src/http/index.ts",
         "mcp": "ts-node ./src/stdio/index.ts",
         "mcp-http": "ts-node ./src/http/index.ts",
         "mcp-inspect": "mcp-inspector pnpm mcp"
