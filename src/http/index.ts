@@ -52,12 +52,14 @@ app.post('/mcp', async (req, res) => {
                 inputSchema: {
                     searchText: z.string().describe('Поисковое слово'),
                     salary: z
-                        .number()
+                        .union([z.number(), z.string()])
                         .optional()
+                        .nullable()
                         .describe('Размер заработной платы'),
                     perPage: z
-                        .string()
+                        .union([z.number(), z.string()])
                         .optional()
+                        .nullable()
                         .describe('Количество элементов на странице'),
                 },
             },
